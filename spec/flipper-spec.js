@@ -1,49 +1,55 @@
 const flipped = require('../src/flipper')
 
-describe('A template that contains ** should generate <strong> tags...', ()=>{
+testInlineElement('*', 'strong')
 
-	function shouldDo(shouldStatement){
-		return {
-			as: (result)=>{
-				it(shouldStatement, ()=>{
-					expect(flipped(shouldStatement)).toBe(result)
-				})
+function testInlineElement(c, tag){
+
+	describe(`A template that contains ${c}${c} should generate <${tag}> tags...`, ()=>{
+
+		function shouldDo(shouldStatement){
+			return {
+				as: (result)=>{
+					it(shouldStatement, ()=>{
+						expect(flipped(shouldStatement)).toBe(result)
+					})
+				}
 			}
 		}
-	}
+	
+		shouldDo(`${c}${c}around${c}${c} a word at the start of a string`)
+			.as( `<${tag}>around</${tag}> a word at the start of a string`)
+		
+		shouldDo(`around a word at the end of a ${c}${c}string${c}${c}`)
+			.as( `around a word at the end of a <${tag}>string</${tag}>`)
+		
+		shouldDo(`around a word in the ${c}${c}middle${c}${c} of a string`)
+			.as( `around a word in the <${tag}>middle</${tag}> of a string`)
+		
+		shouldDo(`around ${c}${c}more than one${c}${c} word`)
+			.as( `around <${tag}>more than one</${tag}> word`)
+		
+		shouldDo(`around ${c}${c} spaces ${c}${c}`)
+			.as( `around <${tag}> spaces </${tag}>`)
+		
+		shouldDo(`only if there are two ${c}${c} at the start ${c} and end`)
+			.as( `only if there are two ${c}${c} at the start ${c} and end`)
+		
+		shouldDo(`around ${c}${c}single ${c} ${c}${c}`)
+			.as( `around <${tag}>single ${c} </${tag}>`)
+		
+		shouldDo(`using the first ${c}${c}double ${c} in a string of ${c} ${c}${c}${c}`)
+			.as( `using the first <${tag}>double ${c} in a string of ${c} </${tag}>${c}`)
+		
+		shouldDo(`when ${c}${c}many occur${c}${c} in ${c}${c}one line${c}${c}`)
+			.as( `when <${tag}>many occur</${tag}> in <${tag}>one line</${tag}>`)
+		
+		shouldDo(`${c}${c}only if${c}${c} they are on ${c}${c}the\nsame line${c}${c}`)
+			.as( `<${tag}>only if</${tag}> they are on ${c}${c}the\nsame line${c}${c}`)
+		
+		shouldDo(`${c}${c}only if${c}${c} they are on ${c}${c}the
+		same line${c}${c} in a template literal`)
+			.as( `<${tag}>only if</${tag}> they are on ${c}${c}the
+		same line${c}${c} in a template literal`)
+	})	
 
-	shouldDo('**around** a word at the start of a string')
-		.as( `<strong>around</strong> a word at the start of a string`)
-	
-	shouldDo('around a word at the end of a **string**')
-		.as( `around a word at the end of a <strong>string</strong>`)
-	
-	shouldDo('around a word in the **middle** of a string')
-		.as( `around a word in the <strong>middle</strong> of a string`)
-	
-	shouldDo('around **more than one** word')
-		.as( `around <strong>more than one</strong> word`)
-	
-	shouldDo('around ** spaces **')
-		.as( `around <strong> spaces </strong>`)
-	
-	shouldDo('only if there are two ** at the start * and end')
-		.as( 'only if there are two ** at the start * and end')
-	
-	shouldDo('around **single * **')
-		.as( `around <strong>single * </strong>`)
-	
-	shouldDo('using the first **double * in a string of * ***')
-		.as( `using the first <strong>double * in a string of * </strong>*`)
-	
-	shouldDo('when **many occur** in **one line**')
-		.as( `when <strong>many occur</strong> in <strong>one line</strong>`)
-	
-	shouldDo('**only if** they are on **the\nsame line**')
-		.as( `<strong>only if</strong> they are on **the\nsame line**`)
-	
-	shouldDo(`**only if** they are on **the
-	same line** in a template literal`)
-		.as( `<strong>only if</strong> they are on **the
-	same line** in a template literal`)
-})
+}
