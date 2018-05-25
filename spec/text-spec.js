@@ -1,3 +1,5 @@
+const flipped = require('../src/flipper')
+
 describe('A template...', ()=>{
 	describe('that contains ** should generate <strong> tags...', ()=>{
 
@@ -5,7 +7,7 @@ describe('A template...', ()=>{
 			return {
 				as: (result)=>{
 					it(shouldStatement, ()=>{
-						expect().toBe(result)
+						expect(flipped(shouldStatement)).toBe(result)
 					})
 				}
 			}
