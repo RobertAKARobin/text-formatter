@@ -1,6 +1,10 @@
 const flipped = require('../src/flipper')
 
-testInlineElement('*', 'strong')
+testInlineElement('*', 'b')
+testInlineElement('_', 'u')
+testInlineElement('/', 'i')
+testInlineElement('~', 's')
+testInlineElement('=', 'mark')
 
 function testInlineElement(c, tag){
 
