@@ -3,7 +3,8 @@ const inlineMapping = [
 	['_', 'u'],
 	['/', 'i'],
 	['~', 's'],
-	['=', 'mark']
+	['=', 'mark'],
+	['`', 'code']
 ].map(mapping=>{
 	let [c, tag] = mapping
 	return {

@@ -5,6 +5,7 @@ testInlineElement('_', 'u')
 testInlineElement('/', 'i')
 testInlineElement('~', 's')
 testInlineElement('=', 'mark')
+testInlineElement('`', 'code')
 
 function testInlineElement(c, tag){
 
