@@ -1,4 +1,4 @@
-const flipped = require('../src/flipper')
+const shouldDo = require('./helpers/should')
 
 testInlineElement('*', 'b')
 testInlineElement('_', 'u')
@@ -10,16 +10,6 @@ testInlineElement('`', 'code')
 function testInlineElement(c, tag){
 
 	describe(`A template that contains ${c}${c} should generate <${tag}> tags...`, ()=>{
-
-		function shouldDo(shouldStatement){
-			return {
-				as: (result)=>{
-					it(shouldStatement, ()=>{
-						expect(flipped(shouldStatement)).toBe(result)
-					})
-				}
-			}
-		}
 	
 		shouldDo(`${c}${c}around${c}${c} a word at the start of a string`)
 			.as( `<${tag}>around</${tag}> a word at the start of a string`)
