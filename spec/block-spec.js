@@ -4,10 +4,10 @@ testBlockElement('-', 'li')
 
 function testBlockElement(c, tag){
 
-	describe(`A template that contains - should generate <li> tags...`, ()=>{
+	describe(`A template that contains ${c} should generate <${tag}> tags...`, ()=>{
 	
-		shouldDo(`\n- when it begins a newline`)
-			.as( `\n<li>when it begins a newline</li>`)
+		shouldDo(`\n${c} when it begins a newline`)
+			.as( `\n<${tag}>when it begins a newline</${tag}>`)
 
 	})
 }
