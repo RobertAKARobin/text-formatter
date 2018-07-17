@@ -41,16 +41,16 @@ elementTypes.forEach((elementType)=>{
     const outputTag = mappingPair[1]
     const tester = elementType.generateTester(inputCharacter)
     const replacer = elementType.generateReplacer(outputTag)
-    gauntlet.push([
+    gauntlet.push({
       tester,
       replacer
-    ])
+    })
   })
 })
 
 module.exports = function flipped(input){
   gauntlet.forEach(mapping=>{
-    input = input.replace(mapping[0], mapping[1])
+    input = input.replace(mapping.tester, mapping.replacer)
   })
 	return input
 }
