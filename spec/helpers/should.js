@@ -1,10 +1,18 @@
 const flipped = require('../../src/flipper')
 
+function swapWhitespace(input){
+	return input
+		.replace(/ /g, '[SPACE]')
+		.replace(/\t/g, '[TAB]')
+		.replace(/[\n\r]/g, '[NEWLINE]')
+}
+
 module.exports = function shouldDo(shouldStatement){
 	return {
 		as: (result)=>{
 			it(shouldStatement, ()=>{
-				expect(flipped(shouldStatement)).toBe(result)
+				let test = flipped(shouldStatement)
+				expect(swapWhitespace(test)).toBe(swapWhitespace(result))
 			})
 		}
 	}

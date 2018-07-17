@@ -2,7 +2,7 @@ const elementTypes = [
   {
     typeName: 'inline',
     generateTester: (c)=>{
-      return new RegExp(`\\${c}{2}([^\n\r]*?)\\${c}{2}`, 'g')
+      return new RegExp(`\\${c}{2}([^\\n]*?)\\${c}{2}`, 'g')
     },
     generateReplacer: (tag)=>{
       return function(nil, match){
@@ -21,7 +21,7 @@ const elementTypes = [
   {
     typeName: 'block',
     generateTester: (c)=>{
-      return new RegExp(`(^|\\n|\\r)\\${c}\\s*(.*)(?=$|\\n|\\r)?`, 'g')
+      return new RegExp(`(^|\\n)[ \\t]*\\${c}(.*)(?=$|\\n)`, 'g')
     },
     generateReplacer: (tag)=>{
       return function(nil, newline, match){

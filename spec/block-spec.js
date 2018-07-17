@@ -7,16 +7,16 @@ function testBlockElement(c, tag){
 	describe(`A template that contains ${c} should generate <${tag}> tags...`, ()=>{
 	
 		shouldDo(`\n${c} when it begins a newline`)
-			.as( `\n<${tag}>when it begins a newline</${tag}>`)
+			.as( `\n<${tag}> when it begins a newline</${tag}>`)
 
 		shouldDo(`\n\n${c} when it begins a newline many times\n`)
-			.as( `\n\n<${tag}>when it begins a newline many times</${tag}>\n`)
+			.as( `\n\n<${tag}> when it begins a newline many times</${tag}>\n`)
 		
 		shouldDo(`${c}when it is the first line`)
 			.as( `<${tag}>when it is the first line</${tag}>`)
 
-		shouldDo(`\n  	${c}when it is preceded by whitespace`)
-			.as( `\n  	<${tag}>when it is preceded by whitespace</${tag}>`)
+		shouldDo(`\n	${c}when it is preceded by whitespace`)
+			.as( `\n<${tag}>when it is preceded by whitespace</${tag}>`)
 
 		shouldDo(`\n0${c}but not when preceded by a number`)
 			.as( `\n0${c}but not when preceded by a number`)
