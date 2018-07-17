@@ -27,5 +27,7 @@ function testBlockElement(c, tag){
 		shouldDo(`\n${c}${c}only once if the character is included many times`)
 			.as( `\n<${tag}>${c}only once if the character is included many times</${tag}>`)
 
+		shouldDo(`${c}  	and preserve whitespace after the character`)
+			.as( `<${tag}>  	and preserve whitespace after the character</${tag}>`)
 	})
 }
