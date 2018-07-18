@@ -52,19 +52,16 @@ elementTypes.forEach((elementType)=>{
 	})
 })
 
-const printedRegex = gauntlet.map((mapping)=>{
-	return [
-		mapping.inputCharacter,
-		mapping.tester.toString(),
-		mapping.typeName
-	]
-})
-
-console.log(printedRegex)
-
 module.exports = function flipped(input){
 	gauntlet.forEach((mapping)=>{
 		input = input.replace(mapping.tester, mapping.replacer)
 	})
 	return input
 }
+module.exports.printedRegex = gauntlet.map((mapping)=>{
+	return [
+		mapping.inputCharacter,
+		mapping.tester.toString(),
+		mapping.typeName
+	]
+})

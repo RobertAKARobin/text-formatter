@@ -1,5 +1,7 @@
 const flipped = require('../../src/flipper')
 
+console.log(flipped.printedRegex)
+
 function swapWhitespace(input){
 	return input
 		.replace(/ /g, '[SPACE]')
