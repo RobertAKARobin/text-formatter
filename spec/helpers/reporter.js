@@ -1,7 +1,10 @@
-const Reporter = require('jasmine-terminal-reporter');
-const reporter = new Reporter({
-	isVerbose: true,
-	showColors: true
-});
-
-jasmine.getEnv().addReporter(reporter);
+jasmine.getEnv()
+	.addReporter({
+		specDone: (result)=>{
+			result.failedExpectations.forEach((test)=>{
+				console.log(':')
+				console.log(`Expect: ${test.expected}`)
+				console.log(`Actual: ${test.actual}`)
+			})
+		}
+	})
