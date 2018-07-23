@@ -2,6 +2,12 @@ const shouldDo = require('./helpers/should')
 
 testBlockElement('-', 'li')
 testBlockElement('>', 'blockquote')
+testBlockElement('#', 'h1'),
+testBlockElement('##', 'h2')
+testBlockElement('###', 'h3')
+testBlockElement('####', 'h4')
+testBlockElement('#####', 'h5')
+testBlockElement('######', 'h6')
 
 function testBlockElement(c, tag){
 
