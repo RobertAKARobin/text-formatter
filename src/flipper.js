@@ -21,7 +21,7 @@ const elementTypes = [
 	{
 		typeName: 'block',
 		generateTester: (c)=>{
-			return new RegExp(`(^|\\n)[ \\t]*\\${c}(.*)(?=$|\\n)`, 'g')
+			return new RegExp(`(^|\\n)[ \\t]*\\${c}[ \\t](.*)(?=$|\\n)`, 'g')
 		},
 		generateReplacer: (tag)=>{
 			return function(nil, newline, match){
