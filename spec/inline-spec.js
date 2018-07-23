@@ -1,11 +1,17 @@
 const shouldDo = require('./helpers/should')
 
-testInlineElement('*', 'b')
-testInlineElement('_', 'u')
-testInlineElement('/', 'i')
-testInlineElement('~', 's')
-testInlineElement('=', 'mark')
-testInlineElement('`', 'code')
+const tests = [
+	['*', 'b'],
+	['_', 'u'],
+	['/', 'i'],
+	['~', 's'],
+	['=', 'mark'],
+	['`', 'code']
+]
+
+tests.forEach((testPair)=>{
+	testInlineElement.apply(null, testPair)
+})
 
 function testInlineElement(c, tag){
 

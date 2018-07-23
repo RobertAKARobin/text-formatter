@@ -1,13 +1,19 @@
 const shouldDo = require('./helpers/should')
 
-testBlockElement('-', 'li')
-testBlockElement('>', 'blockquote')
-testBlockElement('#', 'h1'),
-testBlockElement('##', 'h2')
-testBlockElement('###', 'h3')
-testBlockElement('####', 'h4')
-testBlockElement('#####', 'h5')
-testBlockElement('######', 'h6')
+const tests = [
+	['-', 'li'],
+	['>', 'blockquote'],
+	['#', 'h1'],
+	['##', 'h2'],
+	['###', 'h3'],
+	['####', 'h4'],
+	['#####', 'h5'],
+	['######', 'h6']
+]
+
+tests.forEach((testPair)=>{
+	testBlockElement.apply(null, testPair)
+})
 
 function testBlockElement(c, tag){
 
