@@ -29,7 +29,8 @@ const elementTypes = [
 			}
 		},
 		mappingPairs: [
-			['-', 'li']
+			['-', 'li'],
+			['>', 'blockquote']
 		]
 	}
 ]
