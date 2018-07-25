@@ -1,8 +1,6 @@
 const shouldDo = require('./helpers/should')
 
 const tests = [
-	['-', 'li'],
-	['>', 'blockquote'],
 	['#', 'h1'],
 	['##', 'h2'],
 	['###', 'h3'],

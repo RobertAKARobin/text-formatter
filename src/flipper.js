@@ -30,8 +30,6 @@ const elementTypes = [
 			}
 		},
 		mappingPairs: [
-			['-', 'li'],
-			['>', 'blockquote'],
 			['######', 'h6'],
 			['#####', 'h5'],
 			['####', 'h4'],
