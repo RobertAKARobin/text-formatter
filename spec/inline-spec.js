@@ -6,7 +6,8 @@ const tests = [
 	['/', 'i'],
 	['~', 's'],
 	['=', 'mark'],
-	['`', 'code']
+	['`', 'code'],
+	["'", 'q']
 ]
 
 tests.forEach((testPair)=>{
