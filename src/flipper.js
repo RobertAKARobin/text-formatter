@@ -44,16 +44,16 @@ const gauntlet = []
 elementTypes.forEach((elementType)=>{
 	const typeName = elementType.typeName
 	elementType.mappingPairs.forEach((mappingPair)=>{
-		const inputCharacter = mappingPair[0]
-		const outputTag = mappingPair[1]
-		const tester = elementType.generateTester(inputCharacter)
-		const replacer = elementType.generateReplacer(outputTag)
+		const pattern = mappingPair[0]
+		const output = mappingPair[1]
+		const tester = elementType.generateTester(pattern)
+		const replacer = elementType.generateReplacer(output)
 		gauntlet.push({
 			tester,
 			replacer,
 			typeName,
-			inputCharacter,
-			 outputTag
+			pattern,
+			output
 		})
 	})
 })
@@ -66,7 +66,7 @@ module.exports = function flipped(input){
 }
 module.exports.printedRegex = gauntlet.map((mapping)=>{
 	return [
-		mapping.inputCharacter,
+		mapping.pattern,
 		mapping.tester.toString(),
 		mapping.typeName
 	]
