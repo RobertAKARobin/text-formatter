@@ -37,6 +37,20 @@ const elementTypes = [
 			['##', 'h2'],
 			['#', 'h1']
 		]
+	},
+	{
+		typeName: 'noContentBlock',
+		generateTester: (pattern)=>{
+			return new RegExp(`(^|\\n)${pattern}(?=\\n|$)`, 'g')
+		},
+		generateReplacer: (output)=>{
+			return function(nil, newline){
+				return `${newline}${output}`
+			}
+		},
+		mappingPairs: [
+			[`-{3,}`, '<hr />']
+		]
 	}
 ]
 
