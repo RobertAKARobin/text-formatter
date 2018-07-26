@@ -1,6 +1,6 @@
 const shouldDo = require('./helpers/should')
 
-const tests = [
+const inlineTests = [
 	['*', 'b'],
 	['_', 'u'],
 	['/', 'i'],
@@ -8,14 +8,8 @@ const tests = [
 	['=', 'mark'],
 	['`', 'code'],
 	["'", 'q']
-]
-
-tests.forEach((testPair)=>{
-	testInlineElement.apply(null, testPair)
-})
-
-function testInlineElement(c, tag){
-
+].forEach((testPair)=>{
+	const [c, tag] = testPair
 	describe(`A template that contains ${c}${c} should generate <${tag}> tags...`, ()=>{
 	
 		shouldDo(`${c}${c}around${c}${c} a word at the start of a string`)
@@ -53,5 +47,4 @@ function testInlineElement(c, tag){
 			.as( `<${tag}>only if</${tag}> they are on ${c}${c}the
 		same line${c}${c} in a template literal`)
 	})	
-
-}
+})

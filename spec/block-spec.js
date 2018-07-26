@@ -1,20 +1,14 @@
 const shouldDo = require('./helpers/should')
 
-const tests = [
+const blockTests = [
 	['#', 'h1'],
 	['##', 'h2'],
 	['###', 'h3'],
 	['####', 'h4'],
 	['#####', 'h5'],
 	['######', 'h6']
-]
-
-tests.forEach((testPair)=>{
-	testBlockElement.apply(null, testPair)
-})
-
-function testBlockElement(c, tag){
-
+].forEach((testPair)=>{
+	const [c, tag] = testPair
 	describe(`A template that contains ${c} should generate <${tag}> tags...`, ()=>{
 	
 		shouldDo(`\n${c} when it begins a newline, followed by a space`)
@@ -56,4 +50,4 @@ function testBlockElement(c, tag){
 		shouldDo(`${c}  	and preserve whitespace after the character`)
 			.as( `<${tag}> 	and preserve whitespace after the character</${tag}>`)
 	})
-}
+})
