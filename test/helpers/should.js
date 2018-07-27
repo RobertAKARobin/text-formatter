@@ -10,6 +10,12 @@ module.exports = function shouldDo(shouldStatement){
 				let test = flipped(shouldStatement)
 				assert.equal(test, result)
 			})
+		},
+		asUnchanged: ()=>{
+			it(shouldStatement, ()=>{
+				let test = flipped(shouldStatement)
+				assert.equal(test, shouldStatement)
+			})
 		}
 	}
 }

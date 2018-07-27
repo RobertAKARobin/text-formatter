@@ -18,7 +18,7 @@ const blockTests = [
 			.as( `\n<${tag}>when it begins a newline, followed by a tab</${tag}>`)
 		
 		shouldDo(`\n${c}when it begins a newline, but not if not followed by a space`)
-			.as( `\n${c}when it begins a newline, but not if not followed by a space`)
+			.asUnchanged()
 
 		shouldDo(`\n\n${c} when it begins many newlines\n`)
 			.as( `\n\n<${tag}>when it begins many newlines</${tag}>\n`)
@@ -33,16 +33,16 @@ const blockTests = [
 			.as( `<${tag}>when it is the first line</${tag}>`)
 		
 		shouldDo(`${c}when it is the first line, but not if not followed by whitespace`)
-			.as( `${c}when it is the first line, but not if not followed by whitespace`)
+			.asUnchanged()
 
 		shouldDo(`\n	${c} when it is preceded by whitespace`)
 			.as( `\n<${tag}>when it is preceded by whitespace</${tag}>`)
 
 		shouldDo(`\n0${c} but not when preceded by a number`)
-			.as( `\n0${c} but not when preceded by a number`)
+			.asUnchanged()
 		
 		shouldDo(`\n+${c} but not when preceded by a special character`)
-			.as( `\n+${c} but not when preceded by a special character`)
+			.asUnchanged()
 		
 		shouldDo(`\n${c} ${c}only once if the character is included many times`)
 			.as( `\n<${tag}>${c}only once if the character is included many times</${tag}>`)

@@ -13,7 +13,7 @@ const flagTests = [
 			.as( `<${tag}> when it begins the string</${tag}>`)
 		
 		shouldDo(`Not when preceded[${c}by other characters on its line/]`)
-			.as( `Not when preceded[${c}by other characters on its line/]`)
+			.asUnchanged()
 		
 		shouldDo(`\t [${c} when preceded by whitespace/]`)
 			.as( `\t <${tag}> when preceded by whitespace</${tag}>`)
@@ -22,7 +22,7 @@ const flagTests = [
 			.as( `\t <${tag}>\t and preserve whitespace\t </${tag}>`)
 		
 		shouldDo(`[${c} not when not ended by close tag`)
-			.as( `[${c} not when not ended by close tag`)
+			.asUnchanged()
 		
 		shouldDo(`[${c} when spanning \n\n\nmany lines/]`)
 			.as( `<${tag}> when spanning \n\n\nmany lines</${tag}>`)

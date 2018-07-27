@@ -28,7 +28,7 @@ const inlineTests = [
 			.as( `around <${tag}> spaces </${tag}>`)
 		
 		shouldDo(`only if there are two ${c}${c} at the start ${c} and end`)
-			.as( `only if there are two ${c}${c} at the start ${c} and end`)
+			.asUnchanged()
 		
 		shouldDo(`around ${c}${c}single ${c} ${c}${c}`)
 			.as( `around <${tag}>single ${c} </${tag}>`)
