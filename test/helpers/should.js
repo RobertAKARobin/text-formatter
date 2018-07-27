@@ -1,12 +1,12 @@
 const flipped = require('../../src/flipper')
+const assert = require('assert')
 
 console.log(flipped.printedRegex)
 
 function swapWhitespace(input){
 	return input
-		.replace(/ /g, '[SPACE]')
-		.replace(/\t/g, '[TAB]')
-		.replace(/[\n\r]/g, '[NEWLINE]')
+		.replace(/\t/g, '\\T')
+		.replace(/[\n\r]/g, '\\N')
 }
 
 module.exports = function shouldDo(shouldStatement){
@@ -14,7 +14,7 @@ module.exports = function shouldDo(shouldStatement){
 		as: (result)=>{
 			it(shouldStatement, ()=>{
 				let test = flipped(shouldStatement)
-				expect(swapWhitespace(test)).toBe(swapWhitespace(result))
+				assert.equal(swapWhitespace(test), swapWhitespace(result))
 			})
 		}
 	}

@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx jasmine-node --noStack spec"
+    "test": "npx mocha --reporter test/helpers/reporter"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "jasmine-node": "^1.15.0"
+    "mocha": "^5.2.0"
   }
 }
