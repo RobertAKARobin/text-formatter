@@ -5,8 +5,8 @@ const elementTypes = [
 			return new RegExp(`\\${c}{2}([^\\n]*?)\\${c}{2}`, 'g')
 		},
 		generateReplacer: (tag)=>{
-			return function(nil, match){
-				return `<${tag}>${match}</${tag}>`
+			return function(nil, content){
+				return `<${tag}>${content}</${tag}>`
 			}
 		},
 		mappingPairs: [
@@ -25,8 +25,8 @@ const elementTypes = [
 			return new RegExp(`(^|\\n)[ \\t]*\\${c}[ \\t](.*)(?=$|\\n)`, 'g')
 		},
 		generateReplacer: (tag)=>{
-			return function(nil, newline, match){
-				return `${newline}<${tag}>${match}</${tag}>`
+			return function(nil, newline, content){
+				return `${newline}<${tag}>${content}</${tag}>`
 			}
 		},
 		mappingPairs: [
