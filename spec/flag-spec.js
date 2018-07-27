@@ -12,6 +12,9 @@ const flagTests = [
 		shouldDo(`[${c} when it begins the string/]`)
 			.as( `<${tag}> when it begins the string</${tag}>`)
 		
+		shouldDo(`Not when preceded[${c}by other characters on its line/]`)
+			.as( `Not when preceded[${c}by other characters on its line/]`)
+		
 		shouldDo(`\t [${c} when preceded by whitespace/]`)
 			.as( `\t <${tag}> when preceded by whitespace</${tag}>`)
 		
@@ -26,6 +29,15 @@ const flagTests = [
 		
 		shouldDo(`[${c} when close tag comes/]in middle of string, inserting newline`)
 			.as( `<${tag}> when close tag comes</${tag}>\nin middle of string`)
+			
+		shouldDo(`[${c} when nested\n[${c}and preceded by newline/]/]`)
+			.as( `<${tag}> when nested\n<${tag}>and preceded by newline</${tag}>\n</${tag}>`)
+		
+		shouldDo(`[${c} not when nested[${c} and preceded by newline/]/]`)
+			.as( `<${tag}> not when nested${c} and preceded by newline</${tag}>\n/]`)
+		
+		shouldDo(`[${c} and close tag should match\n[${c} first open tag/]like so`)
+			.as( `<${tag}> and close tag should match\n[${c} first open tag</${tag}\nlike so`)
 		
 	})
 })
