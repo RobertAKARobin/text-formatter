@@ -1,5 +1,19 @@
 const elementTypes = [
 	{
+		typeName: 'flagOn',
+		generateTester: (c)=>{
+			return new RegExp(`(^|\\n)[ \\t]*\\[\\${c}(.*)\\/\\]`)
+		},
+		generateReplacer: (tag)=>{
+			return function(nil, newline, content){
+				return `<${tag}>${content}</${tag}>`
+			}
+		},
+		mappingPairs: [
+			['-', 'ul']
+		]
+	},
+	{
 		typeName: 'inline',
 		generateTester: (c)=>{
 			return new RegExp(`\\${c}{2}([^\\n]*?)\\${c}{2}`, 'g')
