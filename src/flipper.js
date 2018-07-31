@@ -1,18 +1,40 @@
-const elementTypes = [
-	{
-		typeName: 'flagOn',
-		generateTester: (c)=>{
-			return new RegExp(`(^|\\n)[ \\t]*\\[\\${c}(.*)\\/\\]`)
-		},
-		generateReplacer: (tag)=>{
-			return function(nil, newline, content){
-				return `<${tag}>${content}</${tag}>`
-			}
-		},
-		mappingPairs: [
-			['-', 'ul']
+const state = {
+	flags: []
+}
+
+const flags = {
+	mappingSets: [
+		[
+			'-',
+			'<ul><li>',
+			'</li></ul>'
 		]
+	],
+	mappingSetsByPattern: {},
+	generateTester: ()=>{
+		const openTagPatterns = flags.mappingSets.map((mappingSet)=>{
+			return mappingSet[0]
+		})
+		return new RegExp(`\\[(${openTagPatterns.join('|')})|(\\/\\])`, 'g')
 	},
+	replacer: (nil, openPattern, isCloseTag)=>{
+		let mappingSet
+		if(isCloseTag){
+			mappingSet = state.flags.pop()
+			return mappingSet[2]
+		}else{
+			mappingSet = flags.mappingSetsByPattern[openPattern]
+			state.flags.push(mappingSet)
+			return mappingSet[1]
+		}
+	}
+}
+flags.mappingSets.forEach((mappingSet)=>{
+	const [openTagPattern, openTag, closeTag] = mappingSet
+	flags.mappingSetsByPattern[openTagPattern] = mappingSet
+})
+
+const elementTypes = [
 	{
 		typeName: 'inline',
 		generateTester: (c)=>{
@@ -69,6 +91,12 @@ const elementTypes = [
 ]
 
 const gauntlet = []
+gauntlet.push({
+	tester: flags.generateTester(),
+	replacer: flags.replacer,
+	typeName: 'flags',
+	pattern: 'FLAGS'
+})
 elementTypes.forEach((elementType)=>{
 	const typeName = elementType.typeName
 	elementType.mappingPairs.forEach((mappingPair)=>{
@@ -80,8 +108,7 @@ elementTypes.forEach((elementType)=>{
 			tester,
 			replacer,
 			typeName,
-			pattern,
-			output
+			pattern
 		})
 	})
 })
