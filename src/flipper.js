@@ -8,6 +8,21 @@ const flags = {
 			'-',
 			'<ul><li>',
 			'</li></ul>'
+		],
+		[
+			'1\.',
+			'<ol><li>',
+			'</li></ol>'
+		],
+		[
+			'\`',
+			'<pre>',
+			'</pre>'
+		],
+		[
+			'\'\'',
+			'<blockquote>',
+			'</blockquote>'
 		]
 	],
 	mappingSetsByPattern: {},

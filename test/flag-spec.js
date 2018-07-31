@@ -5,6 +5,21 @@ const flagTests = [
 		'-',
 		'<ul><li>',
 		'</li></ul>'
+	],
+	[
+		'1.',
+		'<ol><li>',
+		'</li></ol>'
+	],
+	[
+		'\`',
+		'<pre>',
+		'</pre>'
+	],
+	[
+		'\'\'',
+		'<blockquote>',
+		'</blockquote>'
 	]
 ].forEach(([c, oTag, cTag])=>{
 	describe(`A section wrapped in [${c} /] should be wrapped in ${oTag}${cTag}...`, ()=>{
