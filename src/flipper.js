@@ -73,11 +73,11 @@ const elementTypes = [
 	{
 		typeName: 'block',
 		generateTester: (c)=>{
-			return new RegExp(`(^|\\n)[ \\t]*\\${c}[ \\t](.*)(?=$|\\n)`, 'g')
+			return new RegExp(`(^|\\n)([ \\t]*)\\${c}[ \\t](.*)(?=$|\\n)`, 'g')
 		},
 		generateReplacer: (tag)=>{
-			return function(nil, newline, content){
-				return `${newline}<${tag}>${content}</${tag}>`
+			return function(nil, newline, indent, content){
+				return `${newline}${indent}<${tag}>${content}</${tag}>`
 			}
 		},
 		mappingPairs: [

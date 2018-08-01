@@ -36,7 +36,7 @@ const blockTests = [
 			.asUnchanged()
 
 		shouldDo(`\n	${c} when it is preceded by whitespace`)
-			.as( `\n<${tag}>when it is preceded by whitespace</${tag}>`)
+			.as( `\n	<${tag}>when it is preceded by whitespace</${tag}>`)
 
 		shouldDo(`\n0${c} but not when preceded by a number`)
 			.asUnchanged()
@@ -47,7 +47,7 @@ const blockTests = [
 		shouldDo(`\n${c} ${c}only once if the character is included many times`)
 			.as( `\n<${tag}>${c}only once if the character is included many times</${tag}>`)
 
-		shouldDo(`${c}  	and preserve whitespace after the character`)
-			.as( `<${tag}> 	and preserve whitespace after the character</${tag}>`)
+		shouldDo(`${c}  	and preserve whitespace after the character + space`)
+			.as( `<${tag}> 	and preserve whitespace after the character + space</${tag}>`)
 	})
 })
