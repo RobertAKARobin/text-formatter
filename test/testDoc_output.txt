@@ -5,3 +5,7 @@
 	<h3>Section A</h3>
 	
 	<h1># # Section B</h1>
+	
+	1###### Section C
+	
+	<h6>Section D</h6>
