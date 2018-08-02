@@ -5,8 +5,9 @@ console.log(flipped.printedRegex)
 
 module.exports = function shouldDo(shouldStatement){
 	return {
-		as: (result)=>{
-			it(shouldStatement, ()=>{
+		as: (result, isTodo)=>{
+			let testFunction = (isTodo ? xit : it)
+			testFunction(shouldStatement, ()=>{
 				let test = flipped(shouldStatement)
 				assert.equal(test, result)
 			})

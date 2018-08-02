@@ -15,10 +15,14 @@ function swapWhitespace(input){
 
 module.exports = function(runner){
 	mocha.reporters.Base.call(this, runner)
-	let passes = 0, fails = 0
+	let passes = 0, fails = 0, skips = 0
 	
 	runner.on('pass', ()=>{
 		passes += 1
+	})
+	
+	runner.on('pending', ()=>{
+		skips += 1
 	})
 	
 	runner.on('fail', (test, err)=>{
@@ -33,6 +37,7 @@ module.exports = function(runner){
 		console.log('\n===SUMMARY===')
 		console.log('Pass: ' + passes)
 		console.log('Fail: ' + fails)
+		console.log('Skip: ' + skips)
 		process.exit()
 	})
 }

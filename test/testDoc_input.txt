@@ -22,7 +22,7 @@
 --
 # This [- should nest the list /] inside the h1
 --
-# This [-
+//TODO # This [-
 	should close the h1 before the list starts
 /]
 --
@@ -30,5 +30,5 @@
 	# should have a nested h1
 /]
 --
-[- This
+//TODO [- This
 	# should also have a nested h1 /]

@@ -13,6 +13,7 @@ function readFileAsText(filepath){
 
 describe('testDoc', ()=>{
 	testInputs.forEach((input, index)=>{
-		shouldDo(input).as(testOutputs[index])
+		const isTodo = !!(input.indexOf('//TODO') === 0)
+		shouldDo(input).as(testOutputs[index], isTodo)
 	})
 })
