@@ -1,34 +1,34 @@
 # The US Constitution
-
+--
 ## Article 1
-
+--
 	### Section A
-	
+--	
 	# # # Section B
-	
+--	
 	1###### Section C
-	
+--	
 	######  	Section D
-
+--
 [- This is an unordered list
 
 	[1. This is an ordered list /]
 
 /]
-
+--
 [-So[-Many[-Nests/]/]/]
-
+--
 [''[``Code in bq?/] Yes!/]
-
+--
 # This [- should nest the list /] inside the h1
-
+--
 # This [-
 	should close the h1 before the list starts
 /]
-
+--
 [- This
 	# should have a nested h1
 /]
-
+--
 [- This
 	# should also have a nested h1 /]

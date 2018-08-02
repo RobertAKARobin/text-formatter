@@ -2,13 +2,17 @@ const fs = require('fs')
 const path = require('path')
 
 const shouldDo = require('./helpers/should')
-const testInput = readFileAsText('./testDoc_input.txt')
-const testOutput = readFileAsText('./testDoc_output.txt')
+
+const delim = /\n--\s*?\n/g
+const testInputs = readFileAsText('./testDoc_input.txt').split(delim)
+const testOutputs = readFileAsText('./testDoc_output.txt').split(delim)
 
 function readFileAsText(filepath){
 	return fs.readFileSync(path.join(__dirname, filepath), 'utf8')
 }
 
 describe('testDoc', ()=>{
-	shouldDo(testInput).as(testOutput)
+	testInputs.forEach((input, index)=>{
+		shouldDo(input).as(testOutputs[index])
+	})
 })
