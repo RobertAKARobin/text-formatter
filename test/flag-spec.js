@@ -12,7 +12,7 @@ const flagTests = [
 		'</li></ol>'
 	],
 	[
-		'\`',
+		'\`\`',
 		'<pre>',
 		'</pre>'
 	],
