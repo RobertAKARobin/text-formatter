@@ -21,3 +21,14 @@
 <blockquote><pre>Code in bq?</pre> Yes!</blockquote>
 
 <h1>This <ul><li>should nest the list</li></ul> inside the h1</h1>
+
+<h1>This </h1><ul><li>
+	should close the h1 before the list starts
+</li></ul>
+
+<ul><li>This
+	<h1>should have a nested h1</h1>
+</li></ul>
+
+<ul><li>This
+	<h1>should also have a nested h1</h1></li></ul>

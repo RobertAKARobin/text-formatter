@@ -21,3 +21,14 @@
 [''[``Code in bq?/] Yes!/]
 
 # This [- should nest the list /] inside the h1
+
+# This [-
+	should close the h1 before the list starts
+/]
+
+[- This
+	# should have a nested h1
+/]
+
+[- This
+	# should also have a nested h1 /]
