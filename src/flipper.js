@@ -30,7 +30,7 @@ const flags = {
 		const openTagPatterns = flags.mappingSets.map((mappingSet)=>{
 			return mappingSet[0]
 		})
-		return new RegExp(`\\[(${openTagPatterns.join('|')})|(\\/\\])`, 'g')
+		return new RegExp(`\\[(${openTagPatterns.join('|')})[ \\t]*|[ \\t]*(\\/\\])`, 'g')
 	},
 	replacer: (nil, openPattern, isCloseTag)=>{
 		let mappingSet
